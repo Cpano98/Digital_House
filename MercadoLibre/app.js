@@ -3,18 +3,17 @@ const express = require('express');
 const app = express();
 
 //Rutas absolutas
-const path = require('path');
+app.use(express.static(__dirname + '/public'));
 
 //MainPage
 app.get('/', (req, res) =>{
-    res.sendFile(path.join(__dirname,'/views/index.html'));
+    res.sendFile(__dirname + '/views/home.html');
 });
 
 //Página de error
 app.get('/404', (req, res) => {
     res.send("Error. La página solicitada no esta disponible"); 
 });
-
 
 //Respuesta de nuestro servidor.
 app.listen(3000, () =>
